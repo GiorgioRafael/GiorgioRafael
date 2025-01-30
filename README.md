@@ -60,5 +60,8 @@
 </div>
 
 ###
+<div align="center">
+  
+  ![snake gif](https://github.com/GiorgioRafael/GiorgioRafael/blob/output/github-snake-dark.svg)
+</div>
 
-![snake gif](https://github.com/GiorgioRafael/GiorgioRafael/blob/output/github-snake-dark.svg)
