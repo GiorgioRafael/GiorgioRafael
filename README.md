@@ -2,7 +2,7 @@
 
 ###
 
-<p align="left">Sou um estudante apaixonado por ciências da computação, atualmente estou cursando no quinto periodo.</p>
+<p align="left">Sou um estudante de Ciências da computação apaixonado pela tecnologia, atualmente estou no quinto período.</p>
 
 ###
 
