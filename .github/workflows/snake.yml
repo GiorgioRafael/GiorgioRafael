@@ -1,97 +1,63 @@
-name: GitHub Snake Game
-
-
+name: Generate contribution snake
 
 on:
-
-  # Schedule the workflow to run daily at midnight UTC
-
   schedule:
-
-    - cron: "0 0 * * *"
-
-
-
-  # Allow manual triggering of the workflow
-
+    - cron: "17 3 * * *"
   workflow_dispatch:
-
-
-
-  # Trigger the workflow on pushes to the main branch
-
   push:
-
     branches:
-
       - main
 
+permissions:
+  contents: write
 
+concurrency:
+  group: contribution-snake
+  cancel-in-progress: true
 
 jobs:
-
   generate:
-
     runs-on: ubuntu-latest
-
-    timeout-minutes: 10
-
-
+    timeout-minutes: 5
 
     steps:
-
-      # Step 1: Checkout the repository
-
-      - name: Checkout Repository
-
-        uses: actions/checkout@v3
-
-
-
-      # Step 2: Generate the snake animations
-
-      - name: Generate GitHub Contributions Snake Animations
-
-        uses: Platane/snk@v3
-
+      - name: Generate light and dark SVGs
+        uses: Platane/snk/svg-only@v3
         with:
-
-          # GitHub username to generate the animation for
-
           github_user_name: ${{ github.repository_owner }}
-
-
-
-          # Define the output files and their configurations
-
           outputs: |
-
             dist/github-snake.svg
-
             dist/github-snake-dark.svg?palette=github-dark
-
-            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
-
         env:
-
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Publish SVGs to the output branch
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
 
+          remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
-      # Step 3: Deploy the generated files to the 'output' branch
+          if git ls-remote --exit-code --heads "$remote" output >/dev/null 2>&1; then
+            git clone --depth 1 --branch output --single-branch "$remote" published
+          else
+            git init --initial-branch=output published
+            git -C published remote add origin "$remote"
+          fi
 
-      - name: Deploy to Output Branch
+          cp dist/github-snake.svg published/
+          cp dist/github-snake-dark.svg published/
 
-        uses: peaceiris/actions-gh-pages@v3
+          git -C published config user.name "GiorgioRafael"
+          git -C published config user.email "131801417+GiorgioRafael@users.noreply.github.com"
+          git -C published add github-snake.svg github-snake-dark.svg
 
-        with:
+          if git -C published diff --cached --quiet; then
+            echo "Snake SVGs are already up to date."
+            exit 0
+          fi
 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-          publish_dir: ./dist
-
-          publish_branch: output
-
-          # Optionally, you can set a custom commit message
-
-          commit_message: "Update snake animation [skip ci]"
+          git -C published commit -m "chore: atualizar cobrinha de contribuições"
+          git -C published push origin output
