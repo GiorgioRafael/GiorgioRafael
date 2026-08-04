@@ -53,6 +53,14 @@ Meu trabalho recente passa por **TypeScript/React**, aplicações nativas para W
 
 ## Projetos em destaque
 
+### 🏃 [Rivlo](https://www.rivlo.com.br)
+
+Plataforma fitness full-stack e multiplataforma para planejar musculação e corrida, executar treinos e acompanhar histórico, consistência e evolução. Minhas contribuições passam pelo app mobile, backend, integrações nativas de saúde, notificações, recursos sociais, experiências assistidas por IA, analytics e performance.
+
+`React Native` `Expo` `TypeScript` `Node.js` `PostgreSQL` `Railway`
+
+[Conhecer o Rivlo →](https://www.rivlo.com.br) · [App Store](https://apps.apple.com/br/app/rivlo/id6766415215) · [Google Play](https://play.google.com/store/apps/details?id=br.com.rivlo.mobile)
+
 ### 🎧 [OpenQCY Desktop](https://github.com/GiorgioRafael/OpenQCY-Desktop)
 
 Controlador open source e nativo para fones QCY no Windows 11. O projeto combina uma interface WinUI moderna, perfis locais, descoberta Bluetooth somente leitura e uma fronteira segura para pesquisa do protocolo do dispositivo.
@@ -73,20 +81,13 @@ Interpretador didático executado no navegador, com análise léxica, parser, AS
 
 `React` `JavaScript` `CodeMirror` `Vite` `Vitest`
 
-### 🏫 [Escola API](https://github.com/GiorgioRafael/WebSchool-backend)
-
-API de gestão escolar com autenticação JWT, autorização, persistência relacional e trilha de auditoria. O sistema registra alterações, oferece filtros e paginação e documenta os contratos com OpenAPI.
-
-`Java 17` `Spring Boot` `Spring Security` `JPA` `PostgreSQL` `OpenAPI`
-
 ## Colaborações recentes
 
-Também contribuo em produtos privados de fitness e educação, trabalhando em:
+Além do trabalho em destaque no Rivlo, também contribuo em outros produtos digitais, trabalhando em:
 
-- experiências mobile com **React Native e Expo** para Android e iOS;
-- performance de interfaces, animações, notificações e recursos nativos;
 - fluxos assistidos por IA, contratos compartilhados e APIs Node/Fastify;
 - produtos React mobile-first, conteúdo estruturado, SEO e persistência em PostgreSQL.
+- revisão de interfaces, acessibilidade, performance e evolução de bases mantidas em equipe.
 
 Essas contribuições complementam meus projetos públicos e mostram experiência em evoluir bases de código de outras equipes, não apenas projetos iniciados por mim.
 
